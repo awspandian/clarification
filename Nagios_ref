@@ -1,0 +1,48 @@
+  ##Check to make sure you don't have any errors
+sudo /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+
+sudo vi /usr/local/nagios/etc/cgi.cfg
+
+Authenticated user : Someone who has been authenticated to the web server with valid credentials [username and password] and granted access tot he Nagios interface.
+
+Authenticated Contact: An authenticated user whose username matches a username in the contact definition
+
+
+authorized_for_all_services=nagiosadmin
+authorized_for_all_hosts=nagiosadmin
+
+
+
+htpasswd /usr/local/nagios/etc/htpasswd.users demo
+
+
+sudo vi /usr/local/nagios/etc/cgi.cfg
+
+	authorized_for_all_services=nagiosadmin,demo
+	authorized_for_all_hosts=nagiosadmin,demo
+
+sudo systemctl restart nagios
+
+
+Turning Authentication off : All authentication can be turend off! This is obviously not recommended but it can be done.
+
+Creating a View-Only Account: This type of account can see all the hosts and services but does not have the ability to make any changes
+
+Ceating a system Administrator Account: The user will have full acces to all hosts and services, But because the user is not a contact and is not a member of any contact list. they will not receive any notifications.
+
+Limiting Administrator Account Access: The administrator use will be a contact and have contact information. As a result, it will only be able to access hosts and servers that the contact associated with
+
+cd /usr/local/nagios/etc/
+
+	htpasswd htpasswd.users Raja
+	password:
+
+sudo vi /usr/local/nagios/etc/cgi.cfg
+	
+	authorized_for_all_service_commands=nagiosadmin,raja
+	authorized_for_all_host_commands=nagiosadmin,raja
+	
+	authorized_for_read_only=raja
+	
+	systemctl restart nagios
+	systemctl restart httpd
