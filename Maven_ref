@@ -1,0 +1,61 @@
+#Maven
+Is a Project Management Tool.
+*Can be used for 
+  build
+  dependency Management
+  releases
+  Documenatation
+  Test Executions
+*Maven prefers convertions over configurations
+*Maven also works for Java BAsed Languages
+ Groovy
+ Scala [Hadoob/bigdata]
+ 
+ 
+# Maven uses a file called as pom.xml to define 
+	dependencies
+	project informations
+	plugins
+	
+#Installation:
+Before installing maven ensure jdk is installed 
+#centos:	
+sudo yum install update
+sudo yum install maven -yum	
+
+maven in 5 minutes
+tutorialspoint.com/maven/maven_overview.html
+
+#Maven folder convertions
+
+source code		  = ${basedir}/src/main/java
+Resources		  = ${basedir}/src/main/resources
+Tests			  = ${basedir}/src/test
+Complied byte code= ${basedir}/target
+distributable JAR = ${basedir}/target/classes
+
+#pom.xml
+POM(Project Object Model): is a xml which defines
+	Project info
+	Dependencies
+	plugins
+	profiles
+	
+##Goals
+	compile : compile the code
+	test    : compile the code + test the code
+	package : test the code + package the application
+	install
+	deploy
+	clean   : remove the target folder
+	
+## Executing goals
+
+single goal execution  // mvn clean  // mvn install
+
+multi goal execution  // mvn clean install
+
+
+https://mvnrepository.com/repos/central
+
+
